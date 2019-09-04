@@ -6,19 +6,19 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
+The project uses ruby 2.5.3 and rails 5.2.3
 
 * Database creation
+$ rails db:create
 
 * Database initialization
+$ rails db:seed
 
 * How to run the test suite
+$ bundle exec rspec spec
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+cd into working directory
+$ rails s
+visit localhost:3000
+  /news to get all news
+  /authors to get all authors

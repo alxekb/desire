@@ -6,11 +6,11 @@ FactoryBot.define do
     signature { Faker::Quote.famous_last_words }
 
     factory :post do
-      user
       title {  Faker::Lorem.title }
       notice { Faker::Lorem.sentence }
       content { Faker::Lorem.paragraph }
       published { false }
+      association(:user)
     end
   end
 end

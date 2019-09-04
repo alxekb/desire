@@ -7,4 +7,8 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:signature) }
     it { should validate_presence_of(:name) }
   end
+
+  describe 'associations' do
+    it { should have_many(:posts) }
+  end
 end

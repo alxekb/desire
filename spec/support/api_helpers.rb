@@ -1,5 +1,7 @@
-module ApiHelpers
-  def json_body
-    JSON.parse(responce.body)
+module Requests
+  module JsonHelpers
+    def json
+      JSON.parse(response.body)
+    end
   end
 end

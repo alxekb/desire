@@ -1,6 +1,16 @@
 class V1::AuthorsController < ApplicationController
   def index
-    users = User.last(24)
-    render json: users
+    @users = User.all
+  end
+
+  def show
+    @author = User.find_by(id: params[:id])
+    @posts = @author.posts
+  end
+
+  private
+
+  def authors_params
+    params.require(:author).permit(:id)
   end
 end

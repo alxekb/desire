@@ -1,7 +1,7 @@
 module V1
   class NewsController < ApplicationController
     before_action :authorize_request, only: %i[create update]
-    before_action :set_post,          only: %i[show   update]
+    before_action :set_post,          only: %i[show update]
     include NewsReader
 
     def index
@@ -9,10 +9,8 @@ module V1
     end
 
     def show
-      if token_present?
-        authorize_request
-        mark_as_read(@post.id, current_user.id)
-      end
+      # if the user provide a token this block will update news read status
+      read_news(@post) if token_present?
     end
 
     def create
@@ -21,7 +19,6 @@ module V1
     end
 
     def update
-      @post = Post.find_by(id: params[:id])
       if current_user.id == @post.user_id
         @post.update(post_params)
         json_response(@post, :updated)
@@ -44,5 +41,9 @@ module V1
       request.headers['Authorization'].present? ? true : false
     end
 
+    def read_news(post)
+      authorize_request
+      mark_as_read(post.id, current_user.id)
+    end
   end
 end

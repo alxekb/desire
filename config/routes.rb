@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :authors, only: %i[index show] do
       resources :news, only: %i[index show create update]
     end
-    resources :news, only: :index
+    resources :news, only: %i[index show]
   end
   post '/login', to: 'authenticate#authenticate'
 end

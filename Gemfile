@@ -29,6 +29,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

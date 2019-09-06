@@ -215,3 +215,24 @@ You'll get something like this:
   ]
 }
 ```
+- [x] только аутентифицированный пользователь может создавать/обновлять 
+```
+curl -X POST localhost:3000/login -d "login=Hugo&password=123123123"
+```
+- [x] выдача всех новостей конкретного автора
+```
+curl -X GET localhost:3000/authors/1 -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTY3ODU2NzE4fQ.FL8gCJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
+```
+- [x] выдача списка авторов
+```
+curl -X GET localhost:3000/authors -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTY3ODU2NzE4fQ.FL8gCJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
+```
+- [x] выдача списка новостей
+```
+curl -X GET localhost:3000/news -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTY3ODU2NzE4fQ.FL8gCJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
+```
+- [x] показывать запрошенную 
+```
+curl -X GET localhost:3000/news/1 -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTY3ODU2NzE4fQ.FL8gCJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
+```
+- [ ] выдача всех непрочитанных пользователем новостей 

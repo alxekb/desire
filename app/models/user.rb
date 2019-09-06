@@ -1,5 +1,14 @@
 class User < ApplicationRecord
-  has_many :posts, dependent: :destroy
+  has_many :unreads, dependent: :destroy
+  has_many :news, through: :unreads,
+                  class_name: 'Post',
+                  foreign_key: 'post_id'
+
+  has_many :posts, inverse_of: 'author', dependent: :destroy
+
+
+
+
   validates :login, presence: true, length: { minimum: 3 },
                     uniqueness: { cast_sensitive: false }
   validates :password_digest, presence: true

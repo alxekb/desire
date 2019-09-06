@@ -6,6 +6,7 @@ module V1
 
     def index
       @news = Post.last(6)
+      extract_news(@news) if token_present?
     end
 
     def show
@@ -34,7 +35,7 @@ module V1
     end
 
     def post_params
-      params.permit(:id, :title, :notice, :content, :published)
+      params.permit(:id, :title, :notice, :content, :published, :unread)
     end
 
     def token_present?
@@ -43,7 +44,13 @@ module V1
 
     def read_news(post)
       authorize_request
-      mark_as_read(post.id, current_user.id)
+      mark_as_read(post.id, current_user)
+
+    end
+
+    def extract_news(posts)
+      authorize_request
+      subtract_news(posts, current_user.id)
     end
   end
 end

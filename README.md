@@ -36,8 +36,11 @@ $ rails c
 ```
 
 Get last user credentials
-```$ User.last.login
 ```
+$ User.last.login
+```
+
+Copy user's login without quotes. Password in this case is 123123123.
 
 Or create a new user 
 ```
@@ -57,8 +60,6 @@ Get token
 ```
 $ User.last.token
 ```
-
-Copy user's login without quotes
 
 Start the server
 ```

@@ -1,7 +1,6 @@
 module ExceptionHandler
-  extend ActiveSupport::Concern
-
   class MissingToken < StandardError; end
+  extend ActiveSupport::Concern
 
   included do
     rescue_from ExceptionHandler::MissingToken, with: :four_twenty_two
@@ -9,7 +8,7 @@ module ExceptionHandler
 
   private
 
-  def four_twenty_two(e)
-    json_response({ message: e.message }, :unprocessible_entity)
+  def four_twenty_two(error)
+    json_response({ message: error.message }, :unprocessible_entity)
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe V1::NewsController, type: :controller do
   describe '#index' do
-    let!(:post) { build :post}
+    let!(:post) { build :post }
     # subject { get :index }
 
     it 'response' do
@@ -17,9 +17,8 @@ RSpec.describe V1::NewsController, type: :controller do
     end
   end
 
-
   describe '#show' do
-    subject { get :show}
+    subject { get :show }
     context ''
   end
 
@@ -27,15 +26,12 @@ RSpec.describe V1::NewsController, type: :controller do
     subject { create :news }
 
     context 'as unauthorized' do
-
     end
 
     context 'as authorized' do
       context 'with invalid params' do
-
       end
       context 'with valid params' do
-
       end
     end
   end

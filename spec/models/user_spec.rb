@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:posts) }
   end
 
-  let(:user) {build :user}
+  let(:user) { build :user }
   describe '#generate_token' do
     it 'generates access token' do
       expect(user.token).to be_nil

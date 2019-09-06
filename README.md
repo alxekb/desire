@@ -30,11 +30,34 @@ $ rails db:seed
 $ bundle exec rspec spec
 ```
 
-Get credentials
+Open rails console
 ```
 $ rails c
-$ User.last.login
 ```
+
+Get last user credentials
+```$ User.last.login
+```
+
+Or create a new user 
+```
+$ User.create!(login: 'login', password: 'password', name: 'name', signature: 'signature')
+```
+
+You'll get something like this
+```
+ (0.2ms)  BEGIN
+  User Exists (0.5ms)  SELECT  1 AS one FROM "users" WHERE "users"."login" = $1 LIMIT $2  [["login", "login"], ["LIMIT", 1]]
+  User Create (8.3ms)  INSERT INTO "users" ("login", "password_digest", "signature", "name", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["login", "login"], ["password_digest", "$2a$12$VikcIC8XKwAVBhNPt0wMw.CBpCJgGmoVJwLcSEE/YXB8QSMuQKDpe"], ["signature", "signature"], ["name", "name"], ["created_at", "2019-09-06 13:04:59.404288"], ["updated_at", "2019-09-06 13:04:59.404288"], ["token", "wpqCka2yjVkneWEU/3rD5q1dsgh+M2BMMfhF7+BIOilK47JvVJ2GpSFRcZQwfNBZhFeiJoacMvbTtxZTczk0HQ=="]]
+   (0.8ms)  COMMIT
+ => #<User id: 24, login: "login", password_digest: "$2a$12$VikcIC8XKwAVBhNPt0wMw.CBpCJgGmoVJwLcSEE/YXB...", signature: "signature", name: "name", created_at: "2019-09-06 13:04:59", updated_at: "2019-09-06 13:04:59", token: "wpqCka2yjVkneWEU/3rD5q1dsgh+M2BMMfhF7+BIOilK47JvVJ..."> 
+2.5.3 :006 > 
+```
+Get token
+```
+$ User.last.token
+```
+
 Copy user's login without quotes
 
 Start the server

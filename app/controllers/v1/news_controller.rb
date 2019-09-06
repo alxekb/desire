@@ -9,10 +9,12 @@ module V1
 
     def show
       @post = Post.find_by(id: params[:id])
-      mark_as_read @post
+      if token_present?
+        authorize_request
+        mark_as_read(@post.id, current_user.id)
+      end
     end
 
-    # localhost:3000/news?published=true&title=post1&notice=Well,%20it's%20a%20notice&content=Lorem%20ipsum
     def create
       @news = current_user.posts.create!(post_params)
       json_response(@news, :created)
@@ -33,5 +35,14 @@ module V1
     def post_params
       params.permit(:id, :title, :notice, :content, :published)
     end
+
+    def token_present?
+      if request.headers['Authorization'].present?
+        true
+      else
+        false
+      end
+    end
+
   end
 end

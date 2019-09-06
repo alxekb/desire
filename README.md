@@ -1,8 +1,8 @@
-__Please follow this steps to get the API running__
+#__Please follow this steps to get the API running__
 
 
 * Ruby version
-The project uses ruby 2.5.3 and rails 5.2.3
+##The project uses ruby 2.5.3 and rails 5.2.3
 
 clone the repo
 ```
@@ -121,81 +121,10 @@ You'll get something like this:
       "signature": "Van Halen!",
       "news": 8
     },
-    {
-      "name": "January Nienow",
-      "signature": "I don't think they even heard me.",
-      "news": 5
-    },
-    {
-      "name": "Matthew Rogahn",
-      "signature": "Well, this is certainly a pleasant surprise.",
-      "news": 3
-    },
-    {
-      "name": "Faye Mohr",
-      "signature": "I went the distance.",
-      "news": 5
-    },
-    {
-      "name": "Lera Langworth",
-      "signature": "I love you too, honey. Good luck with your show.",
-      "news": 7
-    },
-    {
-      "name": "Brandon VonRueden",
-      "signature": "Yes, it's tough, but not as tough as doing comedy.",
-      "news": 3
-    },
-    {
-      "name": "Bernie Green",
-      "signature": "That's good. Go on, read some more.",
-      "news": 6
-    },
-    {
-      "name": "Cole Shields",
-      "signature": "I love you too, honey. Good luck with your show.",
-      "news": 6
-    },
-    {
-      "name": "Alise Stokes",
-      "signature": "Is it not meningitis?",
-      "news": 1
-    },
-    {
-      "name": "Harland Reilly",
-      "signature": "Yes, it's tough, but not as tough as doing comedy.",
-      "news": 5
-    },
-    {
-      "name": "Carrie Dooley",
-      "signature": "Happy.",
-      "news": 1
-    },
-    {
-      "name": "Dr. Misty Renner",
-      "signature": "One! Two! Three!",
-      "news": 7
-    },
-    {
-      "name": "Deanne Buckridge V",
-      "signature": "Van Halen!",
-      "news": 3
-    },
-    {
-      "name": "Reanna Morar",
-      "signature": "I love you.",
-      "news": 10
-    },
-    {
-      "name": "Theodore Ebert",
-      "signature": "I love you too, honey. Good luck with your show.",
-      "news": 3
-    },
-    {
-      "name": "Dan Bruen",
-      "signature": "I am confound.",
-      "news": 7
-    },
+ 
+      ..........
+ 
+
     {
       "name": "Ray Nitzsche",
       "signature": "One! Two! Three!",
@@ -216,7 +145,8 @@ You'll get something like this:
 ```
 
 
-__Results__
+
+#__Results__
 
 - [x] только аутентифицированный пользователь может создавать/обновлять 
 ```
@@ -231,9 +161,37 @@ curl -X POST localhost:3000/login -d "login=Hugo&password=123123123"
 }
 ```
 
+
 - [x] выдача всех новостей конкретного автора
 ```
 curl -X GET localhost:3000/authors/1 -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTY3ODU2NzE4fQ.FL8gCJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
+```
+```
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   476    0   476    0     0   3124      0 --:--:-- --:--:-- --:--:--  3131
+{
+  "author": {
+    "signature": "Hi! I'm a Joe!"
+  },
+  "news": [
+    {
+      "title": "Ducimus expedita aliquid qui.",
+      "notice": "Officiis ullam at assumenda.",
+      "content": "Placeat eligendi quaerat. Porro quo assumenda. Sunt non nesciunt."
+    },
+    {
+      "title": "Ut voluptas veniam omnis.",
+      "notice": "Nihil quaerat libero sed.",
+      "content": "Sint et aut. Dolorem nihil sed. Magnam ut rem."
+    },
+    {
+      "title": "Ullam nisi porro amet.",
+      "notice": "Nobis sit est ut.",
+      "content": "Et aliquam non. Omnis ipsam consequatur. Aut vel dolor."
+    }
+  ]
+}
 ```
 
 - [x] выдача списка авторов

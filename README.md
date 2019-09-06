@@ -1,6 +1,5 @@
-README
-
 __Please follow this steps to get the API running__
+
 
 * Ruby version
 The project uses ruby 2.5.3 and rails 5.2.3
@@ -215,6 +214,10 @@ You'll get something like this:
   ]
 }
 ```
+
+
+__Results__
+
 - [x] только аутентифицированный пользователь может создавать/обновлять 
 ```
 curl -X POST localhost:3000/login -d "login=Hugo&password=123123123"

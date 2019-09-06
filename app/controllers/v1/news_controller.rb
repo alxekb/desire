@@ -1,6 +1,7 @@
 module V1
   class NewsController < ApplicationController
-    before_action :authorize_request, only: [:create, :update]
+    before_action :authorize_request, only: %i[create update]
+    before_action :set_post,          only: %i[show   update]
     include NewsReader
 
     def index
@@ -8,7 +9,6 @@ module V1
     end
 
     def show
-      @post = Post.find_by(id: params[:id])
       if token_present?
         authorize_request
         mark_as_read(@post.id, current_user.id)
@@ -21,10 +21,10 @@ module V1
     end
 
     def update
-      @news = Post.find_by(id: params[:id])
-      if current_user.id == @news.user_id
-        @news.update(post_params)
-        json_response(@news, :updated)
+      @post = Post.find_by(id: params[:id])
+      if current_user.id == @post.user_id
+        @post.update(post_params)
+        json_response(@post, :updated)
       else
         raise(ExceptionHandler::NotAuthorized, Message.unauthorized_request)
       end
@@ -32,16 +32,16 @@ module V1
 
     private
 
+    def set_post
+      @post = Post.find_by(id: params[:id])
+    end
+
     def post_params
       params.permit(:id, :title, :notice, :content, :published)
     end
 
     def token_present?
-      if request.headers['Authorization'].present?
-        true
-      else
-        false
-      end
+      request.headers['Authorization'].present? ? true : false
     end
 
   end

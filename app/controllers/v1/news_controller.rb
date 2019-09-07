@@ -5,13 +5,21 @@ module V1
     include NewsReader
 
     def index
-      @news = Post.last(6)
-      extract_news(@news) if token_present?
+      @news = Post.where('created_at > ?', Date.today - 14.days)
+      # if the user include his token to the request
+      # this will show him only latest news.
+      if token_present?
+        authorize_request
+        @news = @news - current_user.news
+      else
+        @news
+      end
     end
 
     def show
-      # if the user provide a token this block will update news read status
-      read_news(@post) if token_present?
+      # if the user provide a token
+      # this block will update news read status
+      read_news(@post.id) if token_present?
     end
 
     def create
@@ -44,13 +52,7 @@ module V1
 
     def read_news(post)
       authorize_request
-      mark_as_read(post.id, current_user)
-
-    end
-
-    def extract_news(posts)
-      authorize_request
-      subtract_news(posts, current_user.id)
+      mark_as_read(post, current_user)
     end
   end
 end

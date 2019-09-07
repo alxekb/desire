@@ -8,5 +8,5 @@ class Unread < ApplicationRecord
 
 
 
-  validates_presence_of :user, :post
+  validates_presence_of :user_id, :post_id
 end

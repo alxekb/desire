@@ -5,6 +5,6 @@ json.news do
 end
 
 json.author do
-  json.name      @post.user.name
-  json.signature @post.user.signature
+  json.name      @post.author.name
+  json.signature @post.author.signature
 end

@@ -4,10 +4,4 @@ module NewsReader
       current_user.unreads.create(post_id: post)
     end
   end
-
-  def subtract_news(posts, user)
-    posts.each do |post|
-      post.id == Unread.where('user_id = ?', user)
-    end
-  end
 end

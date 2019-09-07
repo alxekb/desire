@@ -6,7 +6,7 @@ module V1
 
     def index
       @news = Post.where('created_at > ?', Date.today - 14.days)
-      # if the user include his token to the request
+      # if a user include his token to the request
       # this will show him only latest news.
       if token_present?
         authorize_request
@@ -17,8 +17,8 @@ module V1
     end
 
     def show
-      # if the user provide a token
-      # this block will update news read status
+      # if a user provide his token
+      # this block will update news read status for the user
       read_news(@post.id) if token_present?
     end
 

@@ -227,9 +227,15 @@ curl -X GET localhost:3000/authors -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c
 ```
 
 - [x] выдача списка новостей
+Если пользователь авторизовани включил в запрос свой токен будут показаны только непочитанные свежие новости, не старше ддвух недель.
 ```
 curl -X GET localhost:3000/news -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTY3ODU2NzE4fQ.FL8gCJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
 ```
+или
+```
+curl -X GET localhost:3000/news | jq
+```
+
 ```
 CJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -279,8 +285,13 @@ CJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
 ```
 
 - [x] показывать запрошенную 
+Если пользователь включил в запрос свой токен - новость будет помечена как прочитанная.
 ```
 curl -X GET localhost:3000/news/1 -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTY3ODU2NzE4fQ.FL8gCJqZ-hywvmhopBDO6Uyek1WTlKBz0Mwa7YYV8w4" | jq
+```
+или
+```
+curl -X GET localhost:3000/news/1 | jq
 ```
 ```
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -299,4 +310,6 @@ curl -X GET localhost:3000/news/1 -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2
 }
 ```
 
-- [ ] выдача всех непрочитанных пользователем новостей 
+- [x] выдача всех непрочитанных пользователем новостей
+Выдача непрочитанных новостей происходит в случае, если пользователь включил в запрос свой токен.
+

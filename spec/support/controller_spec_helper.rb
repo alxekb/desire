@@ -10,14 +10,14 @@ module ControllerSpecHelper
   def headers_with_token
     {
       "Authorization" => token_generator(user.id),
-      "ContentType" => "application/json"
+      "ACCEPT" => "application/json"
     }
   end
 
   def headers_with_empty_token
     {
       "Authorization" => nil,
-      "ContentType" => "application/json"
+      "ACCEPT" => "application/json"
     }
   end
 end

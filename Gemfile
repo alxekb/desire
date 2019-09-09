@@ -30,6 +30,7 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'simplecov', require: false, group: :test
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

@@ -14,7 +14,7 @@ module ControllerSpecHelper
     }
   end
 
-  def headers_without_token
+  def headers_with_empty_token
     {
       "Authorization" => nil,
       "ContentType" => "application/json"

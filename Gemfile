@@ -7,6 +7,7 @@ gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
+gem 'faker', '~> 2.2', '>= 2.2.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jwt'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -15,7 +16,6 @@ gem 'rails', '~> 5.2.3'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'faker', '~> 2.2', '>= 2.2.1'
   gem 'rspec-rails'
 end
 

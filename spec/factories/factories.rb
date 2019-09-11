@@ -11,6 +11,6 @@ FactoryBot.define do
     notice { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraph }
     published { true }
-    association(:user)
+    user
   end
 end

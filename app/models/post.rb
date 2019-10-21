@@ -7,10 +7,6 @@ class Post < ApplicationRecord
   belongs_to :author, class_name: 'User',
   foreign_key: 'user_id'
 
-
-
-
-
   validates :notice, :content, :published,
             :title, :user_id, presence: true
 end

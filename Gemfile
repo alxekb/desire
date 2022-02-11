@@ -11,7 +11,7 @@ gem 'faker', '~> 2.2', '>= 2.2.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jwt'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.2.3'
 
 group :development, :test do
